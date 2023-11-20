@@ -1,4 +1,5 @@
 import { Footer, Header } from './components/common/Layout'; // 하나의 파일 안에 여러개의 컴포넌트
+import Modal from './components/common/Modal';
 import Visual from './components/main/Visual';
 
 export default function App() {
@@ -7,6 +8,7 @@ export default function App() {
 			<Header />
 			<Visual />
 			<Footer />
+			<Modal />
 		</>
 	);
 }
