@@ -2,16 +2,24 @@ import Card from './card/Card';
 
 export default function App() {
 	const colors = ['coral', 'gold', 'lightpink', 'skyblue', 'plum', 'cornflowerblue'];
-	const widths = [250, 300, 500, 150, 200];
+	const widths = [350, 300, 500, 200, 150];
 
 	return (
 		<>
 			<h1>Color Chart</h1>
 			{colors.map((color, idx) => {
-				// 컴포넌트 호출시 특정값을 key={value} 형태로 컴포넌트 내부에 전달 가능(props)
-				return <Card key={color + idx} colorName={color} index={idx} wid={200} />;
+				return (
+					<Card
+						key={color + idx}
+						colorName={color}
+						index={idx}
+						// JSX 내부적으로는 if문을 쓸 수 없기 때문에 삼항연산자로 값 자체를 조건문 처리 가능
+						wid={idx === 1 ? widths[idx] : 200}
+						show={idx === 2 ? false : true}
+					/>
+				);
 			})}
-			<Card colorName={'black'} index={6} wid={400} show={'none'} />;
+			<Card />
 		</>
 	);
 }
