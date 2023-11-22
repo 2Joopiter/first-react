@@ -13,14 +13,17 @@ export default function App() {
 	]
 	*/
 
-	const [Clr, setClr] = useState(Colors);
+	const [DB, setDB] = useState(Colors);
+	// DB-화면에 동적으로 배열의 색상값을 토대로 반복 출력하기 위한 정보값. 해당 이름으로 버튼명을 생성하기 위한 정보값
 	const [Color, setColor] = useState('black');
+	// 이미 생성된 돔에 이벤트 발생시 해당 값을 변경하기 위한 State. 해당 버튼에 있는 문자값을 가져와서 실제 h1의 색상값을 변경하기 위한 정보값
 
 	return (
 		<>
-			{Clr.map((data, idx) => {
+			{DB.map((data, idx) => {
 				return (
 					<button key={data + idx} onClick={() => setColor(data)}>
+						{/* 여기서 onclick이 없으면 Color State는 없어도 됨. 하지만 색상 변경이 필요하기 때문에 Color State가 추가됨*/}
 						{data}
 					</button>
 				);
