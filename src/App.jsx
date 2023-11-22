@@ -1,24 +1,24 @@
 import Modal from './modal/Modal';
+import { useState } from 'react';
 
 export default function App() {
 	console.log('app re-rendered');
-	let isOpen = true;
 
-	const handleModal = () => {
-		isOpen = false;
-	};
+	// useState hook은 배열을 반환
+	// 배열에는 [초기State 값, 해당 state 변경 전용 함수] 가 담겨진것임
+	const [IsOpen, setIsOpen] = useState(false);
 	return (
 		<>
 			<h1>부모 컴포넌트</h1>
-			<button onClick={handleModal}>모달 토글</button>
-			{isOpen && <Modal />}
+			<button onClick={() => setIsOpen(!IsOpen)}>{IsOpen ? '팝업 닫기' : '팝업 열기'}</button>
+			{IsOpen && <Modal />}
 		</>
 	);
 }
 
 /*
 	library vs framework
-	-library (react, jQuery): 자주 쓰는 편의기능의 문법만 함수형태로 따로 준비되어 있는 구조. 필요한걸 가져와서 쓰면 되므로 코드의 응용범위가 넓은 대신 직접 코드를 조합해서 로직을 만들어야 하므로 개발자의 역량에 따라 난이도가 있음
+	-library (react, jQuery): 자주 쓰는 편의기능의 문법만 함수형태로 따로 준비되어 있는 구조. 코드의 응용범위가 넓은 대신 직접 코드를 조합해서 로직을 만들어야 하므로 개발자의 역량에 따라 난이도가 있음
 	-framework (vue, angular, next): 모든 시스템 틀을 강제해서 framework만의 고유 문법을 활용해야만 개발 가능하기 때문에 그 문법을 가져다 쓰기만 하면 되므로 작업자의 개입이 적어져서 코드 난이도는 쉬워지지만 응용 범위가 적어짐
 
 	react에서의 hook 개념 (16버전에서 새로 생김. 이전까지는 객체지향의 class 기반이었음)
