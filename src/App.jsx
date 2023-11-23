@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './App.scss';
+import Modal from './modal/Modal';
 
 /*
 	state관련 주의사항
@@ -8,14 +8,13 @@ import './App.scss';
 */
 
 export default function App() {
-	const [Index, setIndex] = useState(0);
+	const [Open, setOpen] = useState(false);
 
 	return (
 		<>
-			<button onClick={() => setIndex(Index - 1)}>left</button>
-			<button onClick={() => setIndex(Index + 1)}>right</button>
-			{/* 이미 호출할 때 1이 더해지거나 빠져있기 때문에 useState의 초기값과 다른 상태에서 랜더링 사이클을 시작함 */}
-			<div className='box' style={{ transform: `rotate(${45 * Index}deg)` }}></div>
+			<h1>Parent</h1>
+			<button onClick={() => setOpen(true)}>open</button>
+			{Open && <Modal setOpen={setOpen} />}
 		</>
 	);
 }
