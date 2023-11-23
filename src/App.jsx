@@ -5,13 +5,15 @@ export default function App() {
 	const num = useRef(0);
 	const refBox = useRef(null);
 
+	const rotation = (count) => {
+		refBox.current.style.transform = `rotate(${num.current * 45}deg)`;
+	};
+
 	const mins = () => {
 		num.current--;
-		console.log(num.current);
 	};
 	const plus = () => {
 		num.current++;
-		console.log(num.current);
 	};
 
 	// 아래와 같은 경우는 state와 달리 값이 변경시 다음번 렌더링 사이클로 넘어가는 경우가 아니기 때문에
@@ -29,10 +31,10 @@ export default function App() {
 
 	return (
 		<>
-			<button onClick={mins}>left</button>
-			<button onClick={plus}>right</button>
+			<button onClick={() => rotation(--num.current)}>left</button>
+			<button onClick={() => rotation(++num.current)}>right</button>
 
-			<div ref={refBox} className='box' style={{ transform: `rotate(${num.current * 45}deg)` }}></div>
+			<div ref={refBox} className='box'></div>
 		</>
 	);
 }
