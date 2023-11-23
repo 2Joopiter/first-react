@@ -1,21 +1,18 @@
-import { useState } from 'react';
-import Modal from './modal/Modal';
-import './App.scss';
+export default function App() {
+	return;
+	<></>;
+}
 
 /*
-	state관련 주의사항
-	1. state값 변경시 해당 값은 무조건 다음 렌더링 사이클에 반영
-	2. 위의 특성에 기인해서 특정 숫자값을 증감시킬 때 후위연산자 사용은 절대 안됨
+
+	state: 해당 값이 변경되면 무조건 컴포넌트를 재랜더링, 이전 렌더링 사이클값이 유지됨
+	useRef 
+		-리액트 내부적으로 기억할 수 있는 값을 담기위한 참조객체 생성함수
+		- 실사례: 모션을 위해서 자주 바뀌는 수치값을 컴포넌트를 재호출 하지 않으면서 관리할 때
+		- 실사례2: 리얼돔 요소를 리액트 구조 안에서 선택하고 써야 될 때
+
+		<쓰임 1에 대한 해설>
+		- useRef를 통해서 생성한 참조객체에 저장한 값은 다른 state 변경에 의해서 컴포넌트가 재렌더링 되더라도 이전 사이클에서의 값을 유지
+		- 참조객체에 담겨있는 값을 우리가 임의로 변경하더라도 해당 값의 변경은 state와 달리 컴포넌트를 재랜더링 시키지 않음
+		- 모션같이 화면의 정보를 담당하는 중요한 정보값이 아닌 덜 중요한 값들은 참조객체로 관리하는 것이 유리
 */
-
-export default function App() {
-	const [Open, setOpen] = useState(false);
-
-	return (
-		<>
-			<h1>Parent</h1>
-			<button onClick={() => setOpen(true)}>open</button>
-			{Open && <Modal setOpen={setOpen} />}
-		</>
-	);
-}
