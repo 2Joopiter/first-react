@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Modal from './modal/Modal';
+import './App.scss';
 
 /*
 	state관련 주의사항
