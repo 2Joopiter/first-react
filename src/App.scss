@@ -1,9 +1,7 @@
-* {
-	margin: 0;
-	padding: 0;
-}
-
-body {
-	height: 300vh;
-	background: linear-gradient(to bottom, gold, seagreen, dodgerblue);
+.box {
+	width: 200px;
+	height: 200px;
+	background-color: royalblue;
+	margin: 50px;
+	transition: transform 0.5s;
 }
